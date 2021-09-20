@@ -4,7 +4,7 @@ const postSeeds = require('./post-seed');
 
 const sequelize = require('../config/connection');
 
-const seedData = async => {
+const seedData = async() => {
     await sequelize.sync({force: true});
     console.log('Waiting for data to seed...');
     await userSeeds();
