@@ -1,7 +1,5 @@
 const router = require('express').Router();
 const {Post, Comment, User} = require('../../models');
-const session = require('express-session');
-const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     User.findAll(
@@ -30,7 +28,7 @@ router.get('/:id', (req, res) => {
             include: [
                 {
                     model: Post,
-                    attributes: ['id', 'title', 'content', 'created_at']
+                    attributes: ['id', 'title', 'post_content', 'created_at']
                 },
 
                 {
@@ -72,13 +70,13 @@ router.post('/', (req, res) => {
         }
     )
     
-    .then((dbUserData) => {
+    .then(dbUserData => {
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
-        })
-        res.json(dbUserData);
+            res.json(dbUserData);
+        });
     })
 
     .catch((err) => {

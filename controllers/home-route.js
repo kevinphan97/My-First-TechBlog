@@ -4,7 +4,7 @@ const {Post, Comment, User} = require('../models/');
 
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: ['id', 'title', 'content', 'created_at'],
+        attributes: ['id', 'title', 'post_content', 'created_at'],
 
         include: [{
             model: Comment,
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
                 attributes: ['username']
             }
         },
-
+        
         {
             model: User,
             attributes: ['username']
@@ -24,7 +24,10 @@ router.get('/', (req, res) => {
     
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({plain:true}));
-        res.render('homepage', {posts, loggedIn: req.session.loggedIn});
+        res.render('homepage', {
+            posts, 
+            loggedIn: req.session.loggedIn
+        });
     })
 
     .catch(err => {
@@ -57,7 +60,7 @@ router.get('/post/:id', (req, res) => {
                 id: req.params.id
             },
 
-            attributes: ['id', 'title', 'content', 'created_at'],
+            attributes: ['id', 'title', 'post_content', 'created_at'],
 
             include: [{
                 model: Comment,
@@ -81,7 +84,10 @@ router.get('/post/:id', (req, res) => {
             return;
         }
         const posts = dbPostData.get({plain:true});
-        res.render('singlepost', {posts, loggedIn: req.session.loggedIn});
+        res.render('singlepost', {
+            posts, 
+            loggedIn: req.session.loggedIn
+        });
     })
 
     .catch(err => {

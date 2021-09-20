@@ -6,19 +6,26 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, (req, res) => {
     Post.findAll({
         where: {
-            user_id: req.session.user.id
+            user_id: req.session.user_id
         },
 
-        attributes: ['id', 'title', 'content', 'created_at'],
+        attributes: ['id', 'title', 'post_content', 'created_at'],
 
-        include: [{
-            model: Comment,
-            attributes: ['id', 'comment_entry', 'post_id', 'user_id', 'created_at'],
-            include: {
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_entry', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            
+            {
                 model: User,
                 attributes: ['username']
             }
-        }]
+        ]   
     })
 
     .then(dbPostData => {
@@ -35,19 +42,26 @@ router.get('/', withAuth, (req, res) => {
 router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
         where: {
-            user_id: req.session.user.id
+            user_id: req.session.user_id
         },
 
-        attributes: ['id', 'title', 'content', 'created_at'],
+        attributes: ['id', 'title', 'post_content', 'created_at'],
 
-        include: [{
-            model: Comment,
-            attributes: ['id', 'comment_entry', 'post_id', 'user_id', 'created_at'],
-            include: {
-                model: User,
-                attributes: ['username']
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_entry', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            
+            {
+               model: User,
+               attributes: ['username'] 
             }
-        }]
+        ]
     })
 
     .then(dbPostData => {
