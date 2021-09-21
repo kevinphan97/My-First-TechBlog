@@ -38,10 +38,6 @@ app.use(session(sess));
 
 app.use(routes);
 
-app.get('/', (req, res) => {
-  res.render('/main.handlebars');
-});
-
 sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => console.log(`Now listening on port: ${PORT}`));
 });
