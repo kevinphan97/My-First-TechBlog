@@ -39,7 +39,7 @@ app.use(session(sess));
 app.use(routes);
 
 app.get('/', (req, res) => {
-  res.render('./views/layouts/main');
+  res.render('/main.handlebars');
 });
 
 sequelize.sync({force: false}).then(() => {
