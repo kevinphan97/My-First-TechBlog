@@ -20,7 +20,7 @@
   The application will be deployed on a live page where the user can see different blog posts, as well as log in and out to create new blog posts and comment on existing ones.
 
   ## Screenshot
-  ![screenshot](https://github.com/kevinphan97/My-First-TechBlog/blob/main/assets/Screen%20Shot%202021-09-19%20at%2010.43.09%20PM.png)
+  ![screenshot]()
 
   ## Contribution
   No contribution needed
