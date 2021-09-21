@@ -1,19 +1,42 @@
-{{> post-info post}}
+<div class="container">
+    <article class="single-post post-li bg-dark text-light">
+        <div class="row">
+            <div class="col-1 points d-flex justify-content-center align-items-center">
+            <div class="col-11">
+                <div class="title">
+                    <span class="header">{{post.title}}</span>
+                </div>
 
-{{#if loggedIn}}
-<div class="card">
-    <h3 class="card-header"></h3>
-    <form class="card-body comment-form" id="comment-form">
+                <div class="meta">
 
-        <label class="form-label">Comment</label>
-        <input id="comment" name="comment-body" class="form-input" />
+                    by {{post.user.username}} on
+                    {{format_date post.created_at}}
+                    {{post.comments.length}} comment(s)
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="postContent">
+                {{post.post_content}}
+            </div>
+        </div>
 
-        <button type="submit" class="btn">Submit</button>
+    </article>
+
+    {{#if loggedIn}}
+
+    <form class="comment-form">
+        <div class="form-group">
+            <textarea class="form-control commentBox" name="comment-body" placeholder="Type a Comment Here" maxlength="255"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Comment</button>
     </form>
-</div>
-{{/if}}
 
-{{> comments post.comments}}
+    {{/if}}
+
+    {{> comments post.comments}}
+</div>
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>

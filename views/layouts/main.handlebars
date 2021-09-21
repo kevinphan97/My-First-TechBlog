@@ -2,39 +2,41 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MVC Tech Blog</title>
-  <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+        integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body>
-  <div class="wrapper">
-      <header class="hero">
-          <div>
-            <nav class"nav">
-                    <a class="link" href="/">Home</a>
-                    <a class="link" href="/dashboard">Dashboard</a>
-                    {{#if loggedIn}}
-                    <a class="link" href="/" id="logout">Logout</a>
-                    {{else}}
-                    <a class="link" href="/login">Login</a>
-                    {{/if}}
-                </nav>          
-          </div>
+<body class="bgd">
+    <nav class="navbar navbar-expand navbar-dark bg-dark nb">
+        <a class="navbar-brand" href="/">Tech Blog</a>
 
-          <h1 class="app-title"><i class="fab "></i>The Tech Blog</h1>
-      </header>
 
-    <main>
-      {{{ body }}}
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            {{#if loggedIn}}
+            <a class="nav-item nav-link" href="/dashboard">Dash board</a>
+            <a id="logout" class="nav-item nav-link" href="/login">Log Out</a>
+            {{else}}
+            <a class="nav-item nav-link text-light" href="/login">Log In</a>
+            {{/if}}
+        </div>
+    </nav>
+
+    <main class="content">
+        {{{body}}}
     </main>
-  </div>
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
-
 </body>
 
 </html>

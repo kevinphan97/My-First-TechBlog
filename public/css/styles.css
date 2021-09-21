@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace;
   }
   
   body, html {
@@ -11,17 +12,34 @@
     background-color: rgb(184, 184, 184);
   }
   
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
   a {
     text-decoration: none;
     color: rgb(135, 137, 250);
     padding: 20px;
     transition: color .1s;
+    font-weight: bolder;
   }
   
   a:hover {
     color:mediumblue;
   }
   
+  .about-section {
+    font-weight: 100%;
+  }
+
+  .signup-link {
+    margin-left: -13px;
+  }
+  .login-link {
+    margin-left: -9px;
+  }
+
   button {
     background-color:rgb(152, 135, 250);
     border: 0;
@@ -142,7 +160,6 @@
   }
   
   .title{
-    background-color: darkslategray;
     color: #ffffff; 
   }
   
@@ -164,11 +181,14 @@
   
   .comment-form {
     margin-bottom: 5%;
+    padding-top: 15px;
   }
   
   .comment {
     padding: 1%;
     margin-bottom: 1%;
+    background-color: wheat;
+    color: black;
   }
   
   .comment:nth-child(odd) {
@@ -197,4 +217,12 @@
   .content{
     background-color: white;
     color: black;   
+  }
+
+  .postContent{
+    margin: 20px;
+  }
+
+  h2 {
+    color: black;
   }
