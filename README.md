@@ -11,7 +11,7 @@
   -[Questions](#questions)<br/>
 
   ## Description
-  This is the first challenge which utilized both a back-end and front-end. Using Mysql2 to insert dummy data onto the page and using express-session in order to create an authentication process.
+  This is the first challenge which utilized both a back-end and front-end. Using Mysql2 to insert dummy data onto the page and using express-session in order to create an authentication process. The application is deployed to heroku at: https://fathomless-cliffs-56912.herokuapp.com
 
   ## Installation
   To use this application, clone the github and then using the integrated terminal type in, "npm install" to install all necessary dependecies.
