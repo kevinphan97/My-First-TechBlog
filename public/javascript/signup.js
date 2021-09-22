@@ -16,7 +16,6 @@ async function signupFormHandler(event) {
           headers: { 'Content-Type': 'application/json' }
       });
 
-      // log the user in once they sign up
       if (response.ok) {
           const response = await fetch('/api/users/login', {
               method: 'post',
